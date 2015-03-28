@@ -65,8 +65,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Clock.html" />
     <Content Include="Default.html" />
     <Content Include="images\ZombieCouple.jpg" />
+    <Content Include="scripts\Clock.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
