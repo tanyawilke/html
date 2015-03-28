@@ -4,6 +4,76 @@
     <title></title>
 </head>
 <body>
+    <canvas id="myCanvas" width="200" height="200" style="border: 1px solid #000;"></canvas>
+    <canvas id="lgCanvas" width="200" height="200" style="border: 1px solid #000;"></canvas>
+    <canvas id="rgCanvas" width="200" height="200" style="border: 1px solid #000;"></canvas>
+    <canvas id="txtCanvas" width="200" height="200" style="border: 1px solid #000;"></canvas>
+    <canvas id="txtSCanvas" width="200" height="200" style="border: 1px solid #000;"></canvas>
+    <canvas id="imgCanvas" style="border: 1px solid#000; width: auto; height: auto;"></canvas>
 
+    <img id="img" src="images/ZombieCouple.jpg" alt="" />
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "#FF0000";
+        ctx.fillRect(0, 0, 150, 75);
+        ctx.moveTo(0, 0);
+        ctx.lineTo(100, 75);
+        ctx.stroke();
+        //Drax a circle
+        ctx.beginPath();
+        ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+        ctx.stroke();
+
+        //Linear Gradient
+        var c = document.getElementById("lgCanvas");
+        var ctx = c.getContext("2d");
+        var grd = ctx.createLinearGradient(0, 0, 200, 0)
+        grd.addColorStop(0, "red");
+        grd.addColorStop(1, "white");
+
+        // Fill with gradient
+        ctx.fillStyle = grd;
+        ctx.fillRect(10, 10, 150, 80);
+
+        //Radial Gradient
+        var c = document.getElementById("rgCanvas");
+        var ctx = c.getContext("2d");
+
+        var grd = ctx.createRadialGradient(75, 50, 5, 90, 60, 100);
+        grd.addColorStop(0, "red");
+        grd.addColorStop(1, "white");
+
+        // Fill with gradient
+        ctx.fillStyle = grd;
+        ctx.fillRect(10, 10, 150, 80);
+
+        //Text
+        var txtC = document.getElementById("txtCanvas");
+        var txtCtx = txtC.getContext("2d");
+
+        txtCtx.fillStyle = "red";
+        txtCtx.font ="30px Arial";
+        txtCtx.fillText("Hello World", 10, 50);
+
+        //Stroke Text
+        var txtSC = document.getElementById("txtSCanvas");
+        var txtSctx = txtSC.getContext("2d");
+
+        
+        txtSctx.font = "30px Arial";
+        txtSctx.textAlign = "center";
+        //txtSctx.strokeText("Hello World", 10, 50);
+        txtSctx.strokeText("Hello World", canvas.width / 2, canvas.height / 2);
+        
+        //You cannot draw the image before the image has loaded. Call the function from window.onload().
+        window.onload = function() {
+            var canvas = document.getElementById("imgCanvas");
+            var ctx = canvas.getContext("2d");
+            var img = document.getElementById("img");
+            ctx.drawImage(img, -20, -20);
+        };
+    </script>
 </body>
 </html>
